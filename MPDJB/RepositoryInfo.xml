@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Repository>
+   <Applications>
+      <Application>
+         <Name>MPDJB</Name>
+         <Version>1.4</Version>
+         <DownloadURL>http://x86dev.org/nmt/mpdjb-v1.4-20090707.zip</DownloadURL>
+         <Author>joblo10</Author>
+         <Maintainer>joblo10</Maintainer>
+         <Description>Music Player Daemon Music Jukebox. MPDJB is a PHP interface used to browse a MPD music database and to control music playback. It allows to browse your library by folders, artists, albums or genres and to list user-defined playlists.</Description>
+         <Homepage>http://x86dev.org/nmt/</Homepage>
+         <InstallScript>Apps/AppInit/appinit.cgi?install&amp;mpdjb-v1.4-20090707.tar</InstallScript>
+         <WebInterfaceURL />
+         <GayaInterfaceURL />
+         <Screenshots>
+         http://x86dev.org/nmt/images/folderview.png
+         </Screenshots>
+         <UsageInstructions>1 - Install MPD ( http://www.networkedmediatank.com/showth...?tid=17306 ). 2 - Make sure you have the MyIhome service started on your NMT.</UsageInstructions>
+         <Forum>http://www.networkedmediatank.com/showthread.php?tid=23653</Forum>
+         <Changelog></Changelog>
+      </Application>
+   </Applications>
+</Repository>
