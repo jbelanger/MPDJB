@@ -1,0 +1,155 @@
+
+ 
+				<div class="post_body" id="pid_200436">
+					<span style="color: #4682B4;"><span style="text-decoration: underline;"><span style="font-size: xx-large;">MPD JukeBox (MPDJB)</span></span></span><br />
+<br />
+This work is highly based on <a href="http://www.networkedmediatank.com/showthread.php?tid=17013" target="_blank">ExtendedGayaExtended</a>. The original application intended to replace the whole Gaya interface while this work focuses only on Music browsing. It is mostly a rework of the original application to integrate Music Player Daemon (MPD) browsing instead of the local filesystem. Big thanks to the previous developers of ExtendedGaya, Delphy, Arjan Mels  and GShock and other contributors.<br />
+<br />
+MPDJB is a PHP interface used to browse a MPD music database and to control music playback. It allows to browse your library by folders, artists, albums or genres and to list user-defined playlists. <br />
+<br />
+The music listing is retrieved via MPD commands. It means it relies exclusively on the MPD database instead of the local filesystem. If you add new folders of songs in your library, you will need to update the MPD database to reflect the changes. You can do so either by issuing a “mpc update” or by selecting the "Update Library" option in the configuration page. IMPORTANT: Once the update is completed, you must reload the configuration to see the newly added files. See note for this option below. <br />
+<br />
+Please share your comments/suggestions and report any problems you may find.<br />
+<br />
+<span style="font-size: large;"><span style="color: #4682B4;"><span style="font-weight: bold;">Requirements:</span></span></span><br />
+* MPD, See this thread: <a href="http://www.networkedmediatank.com/showthread.php?tid=17306" target="_blank">http://www.networkedmediatank.com/showth...?tid=17306</a><br />
+* MyIHome server enabled on your NMT<br />
+* FTP service started. Required by the MPD server.<br />
+<br />
+<span style="font-size: large;"><span style="color: #4682B4;"><span style="font-weight: bold;">Main features:</span></span></span><br />
+* Listen to your music without leaving the user interface;<br />
+* Provides options to control most of MPD functionalities;<br />
+* Auto-playlists, i.e. ability to play all files in current folder, or add folder to playlist;<br />
+* Option to save playlists;<br />
+* Setup page to customize the interface, number of items per page, background image …;<br />
+* Thumbnail view for albums;<br />
+* Dutch, German, French and English localizations for the moment, but more languages can be easily added.<br />
+* Both SD and HD templates, although more effort is made on the HD theme.<br />
+<br />
+<span style="font-size: large;"><span style="color: #4682B4;"><span style="font-weight: bold;">TVID:</span></span></span><br />
+* Play - Toggle pause/play. Play is the same as "mpc play", songs must be present in playlist.<br />
+* Next - Play next song<br />
+* Stop - Stop Playing<br />
+* <span style="font-weight: bold;"><span style="color: #FF0000;">Title/Url</span> - Add the folder currently selected to the current playlist. Best way to navigate and add songs. </span><br />
+* <span style="font-weight: bold;"><span style="color: #FF0000;">Delete</span> - In "Now Playing", removes the selected song from the playlist.</span><br />
+* INFO - When a song is playing, INFO will direct to the songinfo page.<br />
+<br />
+Note: I did not implement the "PREV" tvid because that button on the remote is mapped to the "back" function of the browser. I did not want to sacrifice navigation for this. However, if you need the PREV button to go to the last song, this could be easily mapped to another button of the remote.<br />
+<br />
+<span style="color: #4682B4;"><span style="font-size: large;"><span style="font-weight: bold;">Screenshots:</span></span></span><br />
+Here are some screenshots:<br />
+<br />
+<span style="font-weight: bold;"><span style="text-decoration: underline;"><span style="font-style: italic;">Folder navigation:</span></span></span><br />
+<br />
+<img src="http://jbelanger.co.cc/nmt/images/folderview.png" border="0" alt="[Image: folderview.png]" /><br />
+<br />
+<span style="font-weight: bold;"><span style="text-decoration: underline;"><span style="font-style: italic;">Album view:</span></span></span><br />
+<br />
+<img src="http://jbelanger.co.cc/nmt/images/albumview.png" border="0" alt="[Image: albumview.png]" /><br />
+<br />
+<span style="font-weight: bold;"><span style="text-decoration: underline;"><span style="font-style: italic;">Configuration page:</span></span></span><br />
+<br />
+<img src="http://jbelanger.co.cc/nmt/images/config.jpg" border="0" alt="[Image: config.jpg]" /><br />
+Note on the "Reload interface" option above, this is used to reset the PHP session. Sessions are used for two things, first to cache large directory listings. Secondly, it caches the configuration (mpdjb.conf) instead of loading the config at each page refresh. <br />
+<br />
+<span style="font-weight: bold;"><span style="text-decoration: underline;"><span style="font-style: italic;">Now Playing page:</span></span></span><br />
+<br />
+<img src="http://jbelanger.co.cc/nmt/images/np_song.png" border="0" alt="[Image: np_song.png]" /><br />
+<br />
+<span style="font-weight: bold;"><span style="text-decoration: underline;"><span style="font-style: italic;">Now Playing page with FanArt (Added v1.5):</span></span></span><br />
+<br />
+<img src="http://jbelanger.co.cc/nmt/images/new_nowplaying.jpg" border="0" alt="[Image: new_nowplaying.jpg]" /><br />
+<br />
+<span style="font-size: large;"><span style="color: #4682B4;"><span style="font-weight: bold;">Installation:</span></span></span><br />
+<br />
+<span style="font-weight: bold;">IMPORTANT: Be sure to remove the previous version if you installed it by deleting the MPDJB folder.</span> At first run, the main config is cached within a php session located in the tmp subdirectory. If this folder is not deleted, the new config would not be read until the old session expires. <br />
+<br />
+To install, run these lines via telnet:<br />
+<br />
+<div class="codeblock">
+<div class="title">Code:<br />
+</div><div class="body" dir="ltr"><code>cd /share<br />
+wget http://jbelanger.co.cc/nmt/mpdjb-v1.51-20090802.tar.gz -qO - | tar xvz</code></div></div>
+<br />
+Then browse to the folder "MPDJB" on your NMT and select index.htm. If you want to change the default location, you only need to edit the file index.htm.<br />
+<br />
+The version that will be installed is precompiled with Turck MMCache. If you want to obtain the source (PHP), you can get it from <a href="http://jbelanger.co.cc/nmt/" target="_blank">http://jbelanger.co.cc/nmt/</a><br />
+<br />
+<span style="font-size: large;"><span style="color: #4682B4;"><span style="font-weight: bold;">Uninstallation:</span></span></span><br />
+Simply delete the MPDJB folder. No file is modified outside of the application folder.<br />
+<br />
+<span style="font-size: large;"><span style="color: #4682B4;"><span style="font-weight: bold;">Changelog:</span></span></span><br />
+<br />
+<span style="font-size: medium;"><span style="color: #4682B4;"><span style="font-weight: bold;">v1.51</span></span></span><br />
+- Corrected problems when adding an album with Title/Url and there a "&" in the album name. <br />
+- Added the possiblity to select a remote jsp file by specifying its URL.<br />
+- Added German and Dutch translations (provided by FLaSH and ToRrES).<br />
+- Default Background image now darker and cropped to 1280*720.<br />
+- Re-added script to correct permissions, accidently removed since v1.4.<br />
+- Fixed some localizations issues.<br />
+- Fixed Album image not always shown in Now Playing page<br />
+<br />
+<span style="font-size: medium;"><span style="color: #4682B4;"><span style="font-weight: bold;">v1.5</span></span></span><br />
+- Template_SD width changed to 620 instead of 625<br />
+- <span style="font-weight: bold;">Added a SlideShow feature</span> (Look for the new icon in the mini player)<br />
+---- The default slideshow folder can be selected in the setup page.<br />
+---- <span style="font-weight: bold;">The default image directory is /share/Photo</span>.<br />
+---- This should be changed to fit your setup. This can be done by adding a new line in mpdjb.conf and by selecting it in the setup page.<br />
+---- Images will play randomly, and random won't be in the same order in subsequent launches.<br />
+---- Currently, there is no limit on the number of files found. <span style="color: #FF0000;">The first time you start this version, a playlist will be generated so it could take longer to load the interface based on the number of files in the selected folder.</span>        <br />
+- Added <span style="font-weight: bold;">sorting by tracks</span> when viewing album listing<br />
+- Added song duration labels<br />
+- Songs are now labeled "artist-title" in genre listing instead of only the song title.<br />
+- <span style="font-weight: bold;">Added a list view option for albums.</span><br />
+- <span style="font-weight: bold;">Added a new "Switch View" option in the album listing</span>. You can now toggle between different views directly from the main interface.<br />
+- When viewing song listings, the maximum number of columns has been reduced to 2 to show titles and songs duration correctly.<br />
+- Added browse by letter for the album view.<br />
+- Reworked default album view:<br />
+---- Decreased the number of items shown from 16 to 14. That way titles can now be displayed correctly.<br />
+---- Title will now be truncated correctly. ("..." appended if more than 3 lines)<br />
+- If mpd does not have tag info for a song, the file name will be used instead.<br />
+- <span style="font-weight: bold;">Added a new Now Playing Mode with FanArt.</span><br />
+---- FanArt will be displayed if any images within artist directory are found and if the width of the image is more than 600px. (to avoid including album art)<br />
+---- If more than one image is found, a random image is selected.<br />
+- Added an option in the setup page to choose between 3 different views for the Now playing page. <br />
+<br />
+<span style="font-size: medium;"><span style="color: #4682B4;"><span style="font-weight: bold;">v1.4</span></span></span><br />
+- Mapping of buttons - Edit mpdjb.conf to change default key mapping. You can also map a button to update the MPD database. <br />
+- Removed blank results in artist and album view. <br />
+- Added translations for German and Dutch (thanks to FLaSH and ToRrES)<br />
+- Added a "Browse by letters" feature<br />
+<br />
+<span style="font-size: medium;"><span style="color: #4682B4;"><span style="font-weight: bold;">v1.3</span></span></span><br />
+- Fixed broken page numbering<br />
+- Added German localization (thanks to Flash)<br />
+- Added Dutch localization (thanks to ToRrES)<br />
+- <span style="font-weight: bold;">Added an option to enter a different name for the albumart, defaulted to "folder.jpg"</span><br />
+- Completely new Albumview<br />
+- Added an option to choose how many items are shown in the albumview<br />
+- Added a log label to view last command sent to MPD<br />
+- <span style="font-weight: bold;">Added save playlist option in now playing page</span><br />
+- Changed the Now Playing song display at the bottom and added a static progressbar<br />
+- <span style="font-weight: bold;">Added the INFO TVID</span>, when song playing, pressing INFO will forward to the songinfo page (Now Playing)<br />
+- Added more patterns in language files<br />
+- Fixed pause showing 0:00 instead of actual time<br />
+- Removed automatic sorting when viewing contents of album/artist/playlist<br />
+- Added localization to songinfo page<br />
+<br />
+<span style="font-size: medium;"><span style="color: #4682B4;"><span style="font-weight: bold;">v1.2</span></span></span><br />
+- Improvements to the SD version<br />
+- Corrected view when numbers of rows/columns are changed, it will now display correctly when row number is changed<br />
+- Made interface fonts bigger for both SD and HD theme<br />
+- Added an option to update MPD library<br />
+- Corrected miniplayer offset in NowPlaying page in the SD theme<br />
+- Enlarged Album Art image size in Now Playing page<br />
+- Removed item numbers (there was too much elements on the interface and this was causing weird display behavior when too much elements, ie more than 30 items in listing, can now have up to 48 items in listing)<br />
+- Added icons to items in listing (to replace line numbers)<br />
+<br />
+<span style="font-size: medium;"><span style="color: #4682B4;"><span style="font-weight: bold;">v1.1</span></span></span><br />
+- Added auto-refresh feature on song change<br />
+- Added SD template (<span style="color: #FF0000;">edit mpdjb.conf and change hd for sd to enable</span>).<br />
+- Added now playing page to show song infos.
+				</div>
+				
+				
+ 
